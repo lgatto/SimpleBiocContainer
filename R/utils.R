@@ -44,6 +44,41 @@
     return(as.character(v))
 }
 
+#' Infer likely install source of provided package(s)
+#'
+#' For a given set of package names, check if they are available from
+#' a repository like CRAN/Bioconductor (using \code{\link[BiocManager]{available}}),
+#' if they look like a GitHub package name (match to the pattern \code{"^[^/]+/[^/]+$"),
+#' or if they are likely not installable.
+#'
+#' @param pkgs Character vector with packages names.
+#'
+#' @return A factor of the same length as \code{pkgs} with levels
+#'     \code{c("repository", "github", "unknown")}.
+#'
+#' @importFrom BiocManager available
+#'
+#' @author SimpleBiocContainer authors
+#' @noRd
+#' @keywords internal
+.getPackageInstallSources <- function(pkgs) {
+    # digest argument
+    if (!is.character(pkgs)) {
+        stop("'pkgs' must be a character vector")
+    }
+
+    # get available packges from BiocManager
+    avpkgs <- available(pattern = "", include_installed = TRUE)
+
+    # classify pkgs
+    pkgtype <- factor(rep("unknown", length(pkgs)),
+                      levels = c("repository", "github", "unknown"))
+    pkgtype[pkgs %in% avpkgs] <- "repository"
+    pkgtype[pkgtype == "unknown" & grepl("^[^/]+/[^/]+$", pkgs)] <- "github"
+
+    return(pkgtype)
+}
+
 #' @title Add folders to the container
 #'
 #' @description This function adds the desired folder specified by the user
