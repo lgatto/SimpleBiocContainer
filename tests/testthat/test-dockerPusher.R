@@ -6,9 +6,9 @@ test_that("buildPushDocker successfully calls all three build/push functions", {
   mock_push_hub <- mockery::mock()
   mock_push_gh  <- mockery::mock()
 
-  mockery::stub(buildPushDocker, "buildContainer", mock_build)
-  mockery::stub(buildPushDocker, "pushToDockerHub", mock_push_hub)
-  mockery::stub(buildPushDocker, "pushToGithub", mock_push_gh)
+  mockery::stub(buildPushDocker, ".buildContainer", mock_build)
+  mockery::stub(buildPushDocker, ".pushToDockerHub", mock_push_hub)
+  mockery::stub(buildPushDocker, ".pushToGithub", mock_push_gh)
 
   temp_container <- tempdir()
   suppressMessages(buildPushDocker(temp_container, "random_docker_user", "random_gh_user"))
@@ -25,9 +25,9 @@ test_that("buildPushDocker successfully calls 2 functions when github username i
   mock_push_hub <- mockery::mock()
   mock_push_gh  <- mockery::mock()
 
-  mockery::stub(buildPushDocker, "buildContainer", mock_build)
-  mockery::stub(buildPushDocker, "pushToDockerHub", mock_push_hub)
-  mockery::stub(buildPushDocker, "pushToGithub", mock_push_gh)
+  mockery::stub(buildPushDocker, ".buildContainer", mock_build)
+  mockery::stub(buildPushDocker, ".pushToDockerHub", mock_push_hub)
+  mockery::stub(buildPushDocker, ".pushToGithub", mock_push_gh)
 
   temp_container <- tempdir()
   suppressMessages(buildPushDocker(temp_container, "random_docker_user"))

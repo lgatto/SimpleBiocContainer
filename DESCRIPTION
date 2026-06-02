@@ -33,7 +33,7 @@ Suggests:
     quarto,
     curl,
     mockery
-VignetteBuilder: quarto
+VignetteBuilder: knitr
 URL: https://lgatto.github.io/SimpleBiocContainer/
 License: GPL-3
 Encoding: UTF-8
