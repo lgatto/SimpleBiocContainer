@@ -9,8 +9,8 @@
 #' @param v Character scalar or \code{package_version} object with the desired
 #'     Bioconductor version, typically returned by \code{BiocManager::version()}.
 #'
-#' @return A validated \code{package_version} (if it is an existing release
-#'     version).
+#' @return A `character(1)` with the package version (if it is an existing
+#'     release version).
 #'
 #' @import BiocManager
 #'
@@ -41,5 +41,5 @@
     # Remark: Should we check if a Bioconductor docker container exists?
     #         Can we do that without attempting to pull the image?
 
-    return(v)
+    return(as.character(v))
 }
