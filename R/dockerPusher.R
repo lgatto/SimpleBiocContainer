@@ -4,13 +4,13 @@
   system2("docker", args = buildargs)
 }
 
-.pushToDockerHub <- function(dockerhub_tag){
+.pushToDockerHub <- function(dockerhub_tag) {
   pushargs_hub <- paste0("push ", dockerhub_tag)
   message("Pushing container to Docker Hub.")
   system2("docker", args = pushargs_hub)
 }
 
-.pushToGithub <- function(dockerhub_tag, ghcr_tag){
+.pushToGithub <- function(dockerhub_tag, ghcr_tag) {
   tagargs <- paste0("tag ", dockerhub_tag, " ", ghcr_tag)
   system2("docker", args = tagargs)
   pushargs_ghcr <- paste0("push ", ghcr_tag)
@@ -21,7 +21,7 @@
 
 ##' @title Build and Push the Container
 ##'
-##' @description Simple function to build and push the container to Docker Hub
+##' @description A simple function to build and push the container to Docker Hub
 ##'     or optionally Github directly from R.
 ##'
 ##' @param container `character(1)` with the path to the container directory, as
@@ -53,6 +53,6 @@ buildPushDocker <- function(container, dockerUsername, ghUsername = NULL) {
     ghcr_tag <- NULL
   }
 
-  message("Pushing Happend")
+  message("Done.")
   return(c(DockerHub = dockerhub_tag, GHCR = ghcr_tag))
 }
