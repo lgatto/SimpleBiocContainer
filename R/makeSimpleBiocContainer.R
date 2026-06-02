@@ -76,17 +76,12 @@ makeSimpleBiocContainer <- function(package = NULL,
         cat(cmd, file = df, append = TRUE)
     })
     if (!is.null(data)) {
-        message("Adding data \U1F4C2.")
-        dir.create(file.path(container, "data"))
-        file.copy(data, paste0(container, "/data/"))
-        cat("ADD data /home/rstudio/data/\n", file = df, append = TRUE)
+        .addFolderToContainer(data, container, df)
     }
     if (!is.null(script)) {
-        message("Adding scripts \U1F436.")
-        dir.create(file.path(container, "script"))
-        file.copy(script, paste0(container, "/script/"))
-        cat("ADD script /home/rstudio/script/\n", file = df, append = TRUE)
+        .addFolderToContainer(script, container, df)
     }
     message("Done \U1F44D.")
     return(file.path(getwd(), container))
 }
+
