@@ -1,21 +1,34 @@
 Package: SimpleBiocContainer
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: c(
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre")),
-    person("Dania", "Machlab", email = "dania.machlab@gmail.com", role = c("aut"), 
-           comment = c(ORCID = "0000-0002-2578-6930")),
-    person("João F.", "Carrilho", email = "jf.carrilho@campus.fct.unl.pt", role = c("aut"),
-           comment = c(ORCID = "0009-0002-2265-8922")),
-    person("Michael", "Stadler", , "michael.stadler@fmi.ch", role = c("aut"),
-           comment = c(ORCID = "0000-0002-2269-4934")),
-    person("Ata", "Badr Barzegar", , "Ata.BadrBarzegar@abo.fi", role = c("aut")))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: Create a Simple Bioconductor Docker Container
+Version: 0.1
+Authors@R:
+    c(person(given = "Laurent", family = "Gatto",
+             email = "laurent.gatto@uclouvain.be",
+             comment = c(ORCID = "0000-0002-1520-2268"),
+             role = c("aut", "cre")),
+      person(given = "Dania", family = "Machlab",
+             email = "dania.machlab@gmail.com",
+             comment = c(ORCID = "0000-0002-2578-6930"),
+             role = c("aut")),
+      person(given = "João F.", family = "Carrilho",
+             email = "jf.carrilho@campus.fct.unl.pt",
+             comment = c(ORCID = "0009-0002-2265-8922"),
+             role = c("aut")),
+      person(given = "Michael", family = "Stadler",
+             email = "michael.stadler@fmi.ch",
+             comment = c(ORCID = "0000-0002-2269-4934"),
+             role = c("aut")),
+      person(given = "Ata", family = "Badr Barzegar",
+             email = "Ata.BadrBarzegar@abo.fi",
+             role = c("aut")))
+Description: The package provides a simple way to generate
+    Bioconductor Docker containers for a set of packages, optionally
+    including data and scripts.
+Depends: R (>= 4.1.0)
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Suggests: 
-    testthat (>= 3.0.0)
+    roxygen2, testthat (>= 3.0.0)
 Config/testthat/edition: 3
