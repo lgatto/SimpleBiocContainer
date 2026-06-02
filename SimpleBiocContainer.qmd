@@ -37,7 +37,3 @@ makeSimpleBiocContainer(
 ```
 
 The code chunk above then creates our container, stores it in the working directory, and returns a character object with the path to the directory. If `package` is not specified, `makeSimpleBiocContainer` will store all the packages that are loaded in the current session.
-
-```{r}
-
-```
