@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SimpleBiocContainer</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,27 +77,94 @@
 <p>Packages to include in the container are either the currently attached packages (default) or specified by users. The files mentioned for <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code> include datasets and scripts users may find useful to have in the container.</p>
 </section><section class="level2"><h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<p>assuming we have a character array <code>pacs</code> with the packages to store in the container and character arrays <code>datasets</code> and <code>scripts</code> with the paths to the data and the scripts respectively, to be included, we can create our container and name it “my_container” as follows:</p>
-<div class="cell">
+<p>We have one or multiple packages that we want to add to the container and character vectors with data and scripts file names to be included. We can create our container and name it <code>"my_container"</code> as follows:</p>
+<div class="cell" data-show="false">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">container_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer</a></span><span class="op">(</span></span>
-<span>  package <span class="op">=</span> <span class="va">pacs</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.create</a></span><span class="op">(</span><span class="st">"data.rda"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.create</a></span><span class="op">(</span><span class="st">"script.R"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lgatto.github.io/SimpleBiocContainer/">SimpleBiocContainer</a></span><span class="op">)</span></span>
+<span><span class="va">container_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer</a></span><span class="op">(</span></span>
+<span>  package <span class="op">=</span> <span class="st">"MsCoreUtils"</span>,</span>
 <span>  container <span class="op">=</span> <span class="st">"my_container"</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">datasets</span>,</span>
-<span>  script <span class="op">=</span> <span class="va">scripts</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span>  data <span class="op">=</span> <span class="st">"data.rda"</span>,</span>
+<span>  script <span class="op">=</span> <span class="st">"script.R"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Creating the container directory 🪐.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Creating the Dockerfile 🔔.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Adding data.rda 📂</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Adding script.R 📂</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Done 👍.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">container_path</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/home/runner/work/SimpleBiocContainer/SimpleBiocContainer/vignettes/my_container"</code></pre>
+</div>
 </div>
 <p>The code chunk above then creates our container, stores it in the working directory, and stores the path to the container directory in <code>container_path</code>. If <code>package</code> is not specified, <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code> will store all the packages that are loaded in the current session.</p>
-<p>After running <code>makeSimpleBiocConductor</code>, we can build our container and push it to Docker Hub as shown below:</p>
+<p>After running <code>makeSimpleBiocConductor()</code>, we can build our container and push it to Docker Hub as shown below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/buildPushDocker.html">buildPushDocker</a></span><span class="op">(</span></span>
 <span>  container <span class="op">=</span> <span class="va">container_path</span>,</span>
-<span>  dockerUsername <span class="op">=</span> <span class="st">"docker_username"</span>, <span class="co"># replace by the intended Docker username</span></span>
-<span>  ghUsername <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span>  dockerUsername <span class="op">=</span> <span class="st">"docker_username"</span><span class="op">)</span> <span class="co"># replace by the intended Docker username</span></span></code></pre></div>
 </div>
 <p>The argument <code>ghUsername</code> (<code>NULL</code> by default) allows us to push the container to GitHub as well, being enough to feed it with a character object that contains the username we intend to push the container to.</p>
+</section><section class="level2"><h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
+</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.6.0 (2026-04-24)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 24.04.4 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C
+
+time zone: UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base
+
+other attached packages:
+[1] SimpleBiocContainer_0.2.0
+
+loaded via a namespace (and not attached):
+ [1] BiocManager_1.30.27 compiler_4.6.0      fastmap_1.2.0
+ [4] cli_3.6.6           tools_4.6.0         htmltools_0.5.9
+ [7] yaml_2.3.12         rmarkdown_2.31      knitr_1.51
+[10] jsonlite_2.0.0      xfun_0.58           digest_0.6.39
+[13] rlang_1.2.0         evaluate_1.0.5     </code></pre>
+</div>
+</div>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
