@@ -2,7 +2,12 @@ Package: SimpleBiocContainer
 Title: Create a Simple Bioconductor Docker Container
 Version: 0.1
 Authors@R:
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    c(person(given = "Laurent", family = "Gatto",
+             email = "laurent.gatto@uclouvain.be",
+             role = c("aut", "cre"),
+      person(given = "name", family = "family name",
+             email = "email",
+             role = c("aut"))
 Description: The package provides a simple way to generate
     Bioconductor Docker containers for a set of packages, optionally
     including data and scripts.
