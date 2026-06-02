@@ -30,6 +30,7 @@ Suggests:
     roxygen2,
     testthat (>= 3.0.0),
     knitr,
+    quarto,
     curl
 VignetteBuilder: quarto
 URL: https://lgatto.github.io/SimpleBiocContainer/
