@@ -1,11 +1,14 @@
 Package: SimpleBiocContainer
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
+Title: Create a Simple Bioconductor Docker Container
+Version: 0.1
+Authors@R:
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: The package provides a simple way to generate
+    Bioconductor Docker containers for a set of packages, optionally
+    including data and scripts.
+Suggests:
+    roxygen2
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
