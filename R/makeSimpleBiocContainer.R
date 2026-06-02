@@ -85,32 +85,3 @@ makeSimpleBiocContainer <- function(package = NULL,
     return(file.path(getwd(), container))
 }
 
-#' @title addFolderToContainer
-#' 
-#' @description
-#' This function adds the desired folder(s) specified by the user to the 
-#' container.
-#' 
-#' @param folder The folder name to include (along with its contents) in the
-#'   container
-#' @param container The container name
-#' @param df the Dockerfile to write to
-#' @param verbose
-#' 
-#' 
-#' 
-.addFolderToContainer <- function(folder, container, df, verbose = TRUE){
-    # make sure supplied folder exists in wdir
-    stopifnot(!is.null(folder))
-  
-    # message if verbose
-    if(verbose) {
-      message("Adding ", folder, " 📂.")
-    }
-  
-    # create 
-    dir.create(file.path(container, folder))
-    file.copy(folder, file.path(container, folder, "/"))
-    cat("ADD ", folder, " /home/rstudio/data/\n", file = df, append = TRUE)
-}
-
