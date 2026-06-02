@@ -44,31 +44,63 @@
     return(as.character(v))
 }
 
+#' Infer likely install source of provided package(s)
+#'
+#' For a given set of package names, check if they are available from
+#' a repository like CRAN/Bioconductor (using \code{\link[BiocManager]{available}}),
+#' if they look like a GitHub package name (match to the pattern \code{"^[^/]+/[^/]+$"),
+#' or if they are likely not installable.
+#'
+#' @param pkgs Character vector with packages names.
+#'
+#' @return A factor of the same length as \code{pkgs} with levels
+#'     \code{c("repository", "github", "unknown")}.
+#'
+#' @importFrom BiocManager available
+#'
+#' @author SimpleBiocContainer authors
+#' @noRd
+#' @keywords internal
+.getPackageInstallSources <- function(pkgs) {
+    # digest argument
+    if (!is.character(pkgs)) {
+        stop("'pkgs' must be a character vector")
+    }
+
+    # get available packges from BiocManager
+    avpkgs <- available(pattern = "", include_installed = TRUE)
+
+    # classify pkgs
+    pkgtype <- factor(rep("unknown", length(pkgs)),
+                      levels = c("repository", "github", "unknown"))
+    pkgtype[pkgs %in% avpkgs] <- "repository"
+    pkgtype[pkgtype == "unknown" & grepl("^[^/]+/[^/]+$", pkgs)] <- "github"
+
+    return(pkgtype)
+}
+
 #' @title Add folders to the container
 #'
 #' @description This function adds the desired folder specified by the user
 #'    to the container.
 #'
 #' @inheritParams makeSimpleBiocContainer
+#'
 #' @param folder `character(1)` The folder name to include (along with its
 #'    contents) in the container.
+#'
 #' @param df `character(1)` The Dockerfile to write to.
-#' @param verbose Be verbose.
+#'
+#' @author Dania Machlab
 #'
 #' @noRd
 #' @keywords internal
-.addFolderToContainer <- function(folder, container, df, verbose = TRUE) {
-  # make sure supplied folder exists in wdir
-  stopifnot(!is.null(folder))
-
-  # message if verbose
-  if (verbose) {
+.addFolderToContainer <- function(folder, container, df) {
+    ## make sure supplied folder exists in wdir
+    stopifnot(!is.null(folder))
     message("Adding ", folder, " \U1F4C2")
-  }
-
-  # create
-  dir.create(file.path(container, folder))
-  file.copy(folder, file.path(container, folder, "/"))
-  cat("ADD ", folder, " /home/rstudio/data/\n", file = df, append = TRUE)
-  invisible(return(TRUE))
+    dir.create(file.path(container, folder))
+    file.copy(folder, file.path(container, folder, "/"))
+    cat("ADD ", folder, " /home/rstudio/data/\n", file = df, append = TRUE)
+    invisible(return(TRUE))
 }

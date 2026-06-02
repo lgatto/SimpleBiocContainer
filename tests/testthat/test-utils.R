@@ -12,3 +12,16 @@ test_that(".ensureReleaseVersion works", {
     expect_identical(.ensureReleaseVersion("3.22"), "3.22")
     expect_identical(.ensureReleaseVersion(package_version("3.22")), "3.22")
 })
+
+test_that(".getPackageInstallSources works", {
+
+    expect_error(.getPackageInstallSources(1:3), "must be a character vector")
+
+    skip_if_offline()
+    res <- .getPackageInstallSources(c("edgeR", "MASS", "BiocManager",
+                                       "something", "fmicompbio/monaLisa"))
+    expect_identical(
+        res,
+        factor(c("repository", "repository", "repository", "unknown", "github"),
+               levels = c("repository", "github", "unknown")))
+})
