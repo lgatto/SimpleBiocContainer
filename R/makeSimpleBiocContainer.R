@@ -51,8 +51,17 @@ makeSimpleBiocContainer <- function(package = NULL,
         if (!any(file.exists(script))) stop("Script(s) not found.")
     if (file.exists(container))
         stop("Container directory already exists.")
-    if (is.null(package))
+    if (is.null(package)) {
         package <- unname(sapply(sessionInfo()$otherPkgs, \(x) x$Package))
+        packageFrom <- .getPackageInstallSources(package)
+        if (any(packageFrom == "unknown")) {
+            stop("Not all package installation sources could be determined\n",
+                 "  ", sum(packageFrom != "unknown"), " packages are installable: ",
+                 paste(package[packageFrom != "unknown"], collapse = ", "), "\n",
+                 "  ", sum(packageFrom), " packages are not available from CRAN/Bioconductor: ",
+                 paste(package[packageFrom == "unknown"], collapse = ", "))
+        }
+    }
     message("Creating the container directory \U1FA90.")
     dir.create(container)
     message("Creating the Dockerfile \U1F514.")
