@@ -52,9 +52,9 @@ makeSimpleBiocContainer <- function(package = NULL,
         stop("Container directory already exists.")
     if (is.null(package))
         package <- unname(sapply(sessionInfo()$otherPkgs, \(x) x$Package))
-    message("Creating the container directory 🪐.")
+    message("Creating the container directory \U1FA90.")
     dir.create(container)
-    message("Creating the Dockerfile 🔔.")
+    message("Creating the Dockerfile \U1F514.")
     df <- file.path(container, "Dockerfile")
     stopifnot(file.create(df))
     v <- .ensureReleaseVersion(BiocManager::version())
@@ -76,12 +76,12 @@ makeSimpleBiocContainer <- function(package = NULL,
         cat(cmd, file = df, append = TRUE)
     })
     if (!is.null(data)) {
-        addFolderToContainer(data, container, df)
+        .addFolderToContainer(data, container, df)
     }
     if (!is.null(script)) {
-        addFolderToContainer(script, container, df)
+        .addFolderToContainer(script, container, df)
     }
-    message("Done 👍")
+    message("Done \U1F44D.")
     return(file.path(getwd(), container))
 }
 
