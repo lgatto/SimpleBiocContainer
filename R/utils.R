@@ -50,25 +50,22 @@
 #'    to the container.
 #'
 #' @inheritParams makeSimpleBiocContainer
+#'
 #' @param folder `character(1)` The folder name to include (along with its
 #'    contents) in the container.
+#'
 #' @param df `character(1)` The Dockerfile to write to.
-#' @param verbose Be verbose.
+#'
+#' @author Dania Machlab
 #'
 #' @noRd
 #' @keywords internal
-.addFolderToContainer <- function(folder, container, df, verbose = TRUE) {
-  # make sure supplied folder exists in wdir
-  stopifnot(!is.null(folder))
-
-  # message if verbose
-  if (verbose) {
+.addFolderToContainer <- function(folder, container, df) {
+    ## make sure supplied folder exists in wdir
+    stopifnot(!is.null(folder))
     message("Adding ", folder, " \U1F4C2")
-  }
-
-  # create
-  dir.create(file.path(container, folder))
-  file.copy(folder, file.path(container, folder, "/"))
-  cat("ADD ", folder, " /home/rstudio/data/\n", file = df, append = TRUE)
-  invisible(return(TRUE))
+    dir.create(file.path(container, folder))
+    file.copy(folder, file.path(container, folder, "/"))
+    cat("ADD ", folder, " /home/rstudio/data/\n", file = df, append = TRUE)
+    invisible(return(TRUE))
 }
