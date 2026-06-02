@@ -4,9 +4,11 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre")),
     person("Dania", "Machlab", email = "dania.machlab@gmail.com", role = c("aut"), 
-           comment = c(ORCID = "0000-0002-2578-6930")))
+           comment = c(ORCID = "0000-0002-2578-6930")),
+    person("João F.", "Carrilho", email = "jf.carrilho@campus.fct.unl.pt", role = c("aut"),
+           comment = c(ORCID = "0009-0002-2265-8922")),
     person("Michael", "Stadler", , "michael.stadler@fmi.ch", role = c("aut"),
-           comment = c(ORCID = "0000-0002-2269-4934"))
+           comment = c(ORCID = "0000-0002-2269-4934")))
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
