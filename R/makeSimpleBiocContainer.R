@@ -36,9 +36,10 @@
 ##' ## Run this in a temporary directory
 ##' oldwd <- getwd()
 ##' setwd(tempdir())
-##' file.create("data.txt")
+##' dir.create("data")
+##' file.create("data/data.txt")
 ##' makeSimpleBiocContainer(package = "BiocVersion",
-##'                         data = "data.txt")
+##'                         includeFolder = "data")
 ##' setwd(oldwd)
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
