@@ -7,9 +7,8 @@ test_that(".ensureReleaseVersion works", {
     expect_error(.ensureReleaseVersion(BiocManager:::.version_bioc("devel")),
                  "is not a former or current release version")
 
-    expect_identical(.ensureReleaseVersion("3.18"), package_version("3.18"))
-    expect_identical(.ensureReleaseVersion("3.20"), package_version("3.20"))
-    expect_identical(.ensureReleaseVersion("3.22"), package_version("3.22"))
-    expect_identical(.ensureReleaseVersion(package_version("3.22")), package_version("3.22"))
+    expect_identical(.ensureReleaseVersion("3.18"), "3.18")
+    expect_identical(.ensureReleaseVersion("3.20"), "3.20")
+    expect_identical(.ensureReleaseVersion("3.22"), "3.22")
+    expect_identical(.ensureReleaseVersion(package_version("3.22")), "3.22")
 })
-

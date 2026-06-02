@@ -13,11 +13,12 @@
 ##'     data and scripts.
 ##'
 ##' @param data Optional `character()` with the paths to one or multiple data to
-##'     be included in the container. Missing files will lead to errors.
+##'     be included in the container in `/home/rstudio/data/`. Missing files
+##'     will lead to errors.
 ##'
 ##' @param script Optional `character()` with the paths to one or multiple
-##'     scripts to be included in the container. Missing files will lead to
-##'     errors.
+##'     scripts to be included in the container in
+##'     `/home/rstudio/script/`. Missing files will lead to errors.
 ##'
 ##' @return The function returns a `character(1)` with the path to the container
 ##'     directory. It is used for its side effect of creating and populating the
@@ -87,4 +88,3 @@ makeSimpleBiocContainer <- function(package = NULL,
     message("Done \U1F44D.")
     return(file.path(getwd(), container))
 }
-
