@@ -40,10 +40,12 @@ build, pushed and shared with collaborators.
 \examples{
 
 ## Run this in a temporary directory
+oldwd <- getwd()
 setwd(tempdir())
 file.create("data.txt")
 makeSimpleBiocContainer(package = "BiocVersion",
                         data = "data.txt")
+setwd(oldwd)
 }
 \author{
 SimpleBiocContainer authors

@@ -28,14 +28,17 @@
 ##' @export
 ##'
 ##' @importFrom BiocManager version
+##' @importFrom utils sessionInfo
 ##'
 ##' @examples
 ##'
 ##' ## Run this in a temporary directory
+##' oldwd <- getwd()
 ##' setwd(tempdir())
 ##' file.create("data.txt")
 ##' makeSimpleBiocContainer(package = "BiocVersion",
 ##'                         data = "data.txt")
+##' setwd(oldwd)
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
                                     data = NULL,
