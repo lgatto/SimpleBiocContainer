@@ -2,5 +2,6 @@
 
 export(makeSimpleBiocContainer)
 import(BiocManager)
+importFrom(BiocManager,available)
 importFrom(BiocManager,version)
 importFrom(utils,sessionInfo)

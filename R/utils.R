@@ -44,12 +44,12 @@
     return(as.character(v))
 }
 
-#' Infer likely install source of provided package(s)
+#' @title Infer likely install source of provided package(s)
 #'
-#' For a given set of package names, check if they are available from
-#' a repository like CRAN/Bioconductor (using \code{\link[BiocManager]{available}}),
-#' if they look like a GitHub package name (match to the pattern \code{"^[^/]+/[^/]+$"),
-#' or if they are likely not installable.
+#' @description For a given set of package names, check if they are available
+#'     from CRAN or Bioconductor (using \code{\link[BiocManager]{available}}),
+#'     if they look like a GitHub package name (match to the pattern
+#'     \code{"^[^/]+/[^/]+$"}, or if they are likely not installable.
 #'
 #' @param pkgs Character vector with packages names.
 #'
