@@ -68,7 +68,7 @@
     }
 
     # get available packges from BiocManager
-    avpkgs <- available(pattern = "", include_installed = TRUE)
+    avpkgs <- suppressMessages(available(pattern = "", include_installed = TRUE))
 
     # classify pkgs
     pkgtype <- factor(rep("unknown", length(pkgs)),
