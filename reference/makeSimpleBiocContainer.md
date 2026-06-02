@@ -70,6 +70,6 @@ makeSimpleBiocContainer(package = "BiocVersion",
 #> Creating the Dockerfile 🔔.
 #> Adding data.txt 📂
 #> Done 👍.
-#> [1] "/tmp/RtmpqVj2NC/mycontainer"
+#> [1] "/tmp/RtmpZr0ir6/mycontainer"
 setwd(oldwd)
 ```
