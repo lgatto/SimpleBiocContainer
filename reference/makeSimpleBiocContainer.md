@@ -45,7 +45,9 @@ makeSimpleBiocContainer(
 
 The function returns a `character(1)` with the path to the container
 directory. It is used for its side effect of creating and populating the
-directory.
+directory. See
+[`buildPushDocker()`](https://lgatto.github.io/SimpleBiocContainer/reference/buildPushDocker.md)
+to build and push the container.
 
 ## Author
 
@@ -66,6 +68,6 @@ makeSimpleBiocContainer(package = "BiocVersion",
 #> Creating the Dockerfile 🔔.
 #> Adding data.txt 📂
 #> Done 👍.
-#> [1] "/tmp/Rtmpx9dEnD/mycontainer"
+#> [1] "/tmp/RtmptZEyTF/mycontainer"
 setwd(oldwd)
 ```
