@@ -6,17 +6,19 @@
 ##'     build, pushed and shared with collaborators.
 ##'
 ##' @param package An optional vector of package names. If not provided, the
-##'     currently attached packages are used.
+##'     currently attached packages are used. The function will verify that all
+##'     the attached packages can be installed from CRAN or Bioconductor and
+##'     fail otherwise.
 ##'
 ##' @param container `character(1)` with the name of the container. This name
 ##'     will be used to create the directory for the Docker file and optional
-##'     data and scripts.
+##'     data and script directories.
 ##'
-##' @param data Optional `character()` with the paths to one or multiple data to
-##'     be included in the container in `/home/rstudio/data/`. Missing files
-##'     will lead to errors.
+##' @param data Optional `character()` with the path to one or multiple data
+##'     files to be included in the container in `/home/rstudio/data/`. Missing
+##'     files will lead to errors.
 ##'
-##' @param script Optional `character()` with the paths to one or multiple
+##' @param script Optional `character()` with the path to one or multiple
 ##'     scripts to be included in the container in
 ##'     `/home/rstudio/script/`. Missing files will lead to errors.
 ##'

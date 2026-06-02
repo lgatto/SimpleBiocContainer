@@ -13,17 +13,19 @@ makeSimpleBiocContainer(
 }
 \arguments{
 \item{package}{An optional vector of package names. If not provided, the
-currently attached packages are used.}
+currently attached packages are used. The function will verify that all
+the attached packages can be installed from CRAN or Bioconductor and
+fail otherwise.}
 
 \item{container}{\code{character(1)} with the name of the container. This name
 will be used to create the directory for the Docker file and optional
-data and scripts.}
+data and script directories.}
 
-\item{data}{Optional \code{character()} with the paths to one or multiple data to
-be included in the container in \verb{/home/rstudio/data/}. Missing files
-will lead to errors.}
+\item{data}{Optional \code{character()} with the path to one or multiple data
+files to be included in the container in \verb{/home/rstudio/data/}. Missing
+files will lead to errors.}
 
-\item{script}{Optional \code{character()} with the paths to one or multiple
+\item{script}{Optional \code{character()} with the path to one or multiple
 scripts to be included in the container in
 \verb{/home/rstudio/script/}. Missing files will lead to errors.}
 }
