@@ -41,13 +41,16 @@
 ##' setwd(oldwd)
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
-                                    data = NULL,
-                                    script = NULL) {
+                                    includeFolder = NULL) {
     ## Check if files/dir are/is available/missing
-    if (!is.null(data))
-        if (!any(file.exists(data))) stop("Data not found.")
-    if (!is.null(script))
-        if (!any(file.exists(script))) stop("Script(s) not found.")
+    if (!is.null(includeFolder))
+        checkExists <- file.exists(includeFolder)
+        if (!all(checkExists)) 
+            stop("Folder(s) ", includeFolder[!checkExists], " not found.")
+    # if (!is.null(data))
+    #     if (!any(file.exists(data))) stop("Data not found.")
+    # if (!is.null(script))
+    #     if (!any(file.exists(script))) stop("Script(s) not found.")
     if (file.exists(container))
         stop("Container directory already exists.")
     if (is.null(package))
@@ -75,12 +78,12 @@ makeSimpleBiocContainer <- function(package = NULL,
         cmd <- paste0("RUN Rscript -e 'BiocManager::install(\"", x, "\", update = FALSE, ask = FALSE)'\n")
         cat(cmd, file = df, append = TRUE)
     })
-    if (!is.null(data)) {
-        .addFolderToContainer(data, container, df)
+    if (!is.null(includeFolder)) {
+        .addFolderToContainer(includeFolder, container, df)
     }
-    if (!is.null(script)) {
-        .addFolderToContainer(script, container, df)
-    }
+    # if (!is.null(script)) {
+    #     .addFolderToContainer(script, container, df)
+    # }
     message("Done \U1F44D.")
     return(file.path(getwd(), container))
 }

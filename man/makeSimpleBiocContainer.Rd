@@ -7,8 +7,7 @@
 makeSimpleBiocContainer(
   package = NULL,
   container = "mycontainer",
-  data = NULL,
-  script = NULL
+  includeFolder = NULL
 )
 }
 \arguments{
