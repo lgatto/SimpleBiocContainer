@@ -5,9 +5,12 @@ Authors@R:
     c(person(given = "Laurent", family = "Gatto",
              email = "laurent.gatto@uclouvain.be",
              role = c("aut", "cre"),
-      person(given = "name", family = "family name",
-             email = "email",
-             role = c("aut"))
+      person("Dania", "Machlab", email = "dania.machlab@gmail.com", role = c("aut"), 
+             comment = c(ORCID = "0000-0002-2578-6930")),
+      person("João F.", "Carrilho", email = "jf.carrilho@campus.fct.unl.pt", role = c("aut"),
+             comment = c(ORCID = "0009-0002-2265-8922")),
+      person("Michael", "Stadler", , "michael.stadler@fmi.ch", role = c("aut"),
+             comment = c(ORCID = "0000-0002-2269-4934")))
 Description: The package provides a simple way to generate
     Bioconductor Docker containers for a set of packages, optionally
     including data and scripts.
