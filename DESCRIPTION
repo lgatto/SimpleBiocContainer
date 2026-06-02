@@ -29,7 +29,8 @@ Imports: BiocManager
 Suggests:
     roxygen2,
     testthat (>= 3.0.0),
-    curl
+    curl,
+    mockery
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
