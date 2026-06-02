@@ -4,6 +4,7 @@ author: "Laurent Gatto, Dania Machlab, Ata Badr Barzegar, João F. Carrilho, Mic
 package: SimpleBiocContainer
 vignette: >
   %\VignetteIndexEntry{Building a Simple Bioconductor Container}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
