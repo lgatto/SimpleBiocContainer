@@ -57,7 +57,7 @@ makeSimpleBiocContainer <- function(package = NULL,
     message("Creating the Dockerfile 🔔.")
     df <- file.path(container, "Dockerfile")
     stopifnot(file.create(df))
-    v <- as.character(BiocManager::version())
+    v <- .ensureReleaseVersion(BiocManager::version())
     bioccontainer <- paste0("bioconductor/bioconductor_docker:RELEASE_", sub("\\.", "_", v))
     cat(paste("FROM ", bioccontainer, "\n"), file = df, append = TRUE)
     cat("RUN apt-get update && ",
