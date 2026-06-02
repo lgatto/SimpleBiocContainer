@@ -1,17 +1,44 @@
-#'
-#'
-#' @title makeSimpleBiocContainer
-#' @description
-#' This function creates a Dockerfile which will be used to create a container
-#' with the desired \code{R} packages(s).
-#' 
-#' @param package The \code{R} package(s) to be included in the container.
-#' @param container The name of the container.
-#' @param data the data folder.
-#' @param script the script folder.
-#'
-#'
-#' @export
+##' @title Create a Simple Bioconductor Container
+##'
+##' @description This function is the main working horse the the package. It
+##'     creates a container directory and populates it with a Dockerfile and
+##'     optional data and script directories. The container is ready to be
+##'     build, pushed and shared with collaborators.
+##'
+##' @param package An optional vector of package names. If not provided, the
+##'     currently attached packages are used.
+##'
+##' @param container `character(1)` with the name of the container. This name
+##'     will be used to create the directory for the Docker file and optional
+##'     data and scripts.
+##'
+##' @param data Optional `character()` with the paths to one or multiple data to
+##'     be included in the container. Missing files will lead to errors.
+##'
+##' @param script Optional `character()` with the paths to one or multiple
+##'     scripts to be included in the container. Missing files will lead to
+##'     errors.
+##'
+##' @return The function returns a `character(1)` with the path to the container
+##'     directory. It is used for its side effect of creating and populating the
+##'     directory.
+##'
+##' @author SimpleBiocContainer authors
+##'
+##' @export
+##'
+##' @importFrom BiocManager version
+##' @importFrom utils sessionInfo
+##'
+##' @examples
+##'
+##' ## Run this in a temporary directory
+##' oldwd <- getwd()
+##' setwd(tempdir())
+##' file.create("data.txt")
+##' makeSimpleBiocContainer(package = "BiocVersion",
+##'                         data = "data.txt")
+##' setwd(oldwd)
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
                                     data = NULL,
@@ -30,7 +57,7 @@ makeSimpleBiocContainer <- function(package = NULL,
     message("Creating the Dockerfile 🔔.")
     df <- file.path(container, "Dockerfile")
     stopifnot(file.create(df))
-    v <- as.character(BiocManager::version())
+    v <- .ensureReleaseVersion(BiocManager::version())
     bioccontainer <- paste0("bioconductor/bioconductor_docker:RELEASE_", sub("\\.", "_", v))
     cat(paste("FROM ", bioccontainer, "\n"), file = df, append = TRUE)
     cat("RUN apt-get update && ",
@@ -55,7 +82,7 @@ makeSimpleBiocContainer <- function(package = NULL,
         addFolderToContainer(script, container, df)
     }
     message("Done 👍")
-    invisible(file.path(getwd(), container))
+    return(file.path(getwd(), container))
 }
 
 #' @title addFolderToContainer
