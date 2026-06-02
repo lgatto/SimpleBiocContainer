@@ -1,3 +1,17 @@
+#'
+#'
+#' @title makeSimpleBiocContainer
+#' @description
+#' This function creates a Dockerfile which will be used to create a container
+#' with the desired \code{R} packages(s).
+#' 
+#' @param package The \code{R} package(s) to be included in the container.
+#' @param container The name of the container.
+#' @param data the data folder.
+#' @param script the script folder.
+#'
+#'
+#' @export
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
                                     data = NULL,
