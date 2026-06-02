@@ -22,7 +22,7 @@
 ##'
 ##' @return The function returns a `character(1)` with the path to the container
 ##'     directory. It is used for its side effect of creating and populating the
-##'     directory.
+##'     directory. See [buildPushDocker()] to build and push the container.
 ##'
 ##' @author SimpleBiocContainer authors
 ##'

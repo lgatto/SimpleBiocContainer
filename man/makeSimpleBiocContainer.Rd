@@ -30,7 +30,7 @@ scripts to be included in the container in
 \value{
 The function returns a \code{character(1)} with the path to the container
 directory. It is used for its side effect of creating and populating the
-directory.
+directory. See \code{\link[=buildPushDocker]{buildPushDocker()}} to build and push the container.
 }
 \description{
 This function is the main working horse the the package. It
