@@ -75,3 +75,7 @@ buildPushDocker(
 The argument `ghUsername` (`NULL` by default) allows us to push the container to
 GitHub as well, being enough to feed it with a character object that contains the
 username we intend to push the container to.
+
+```{r}
+sessionInfo()
+```
