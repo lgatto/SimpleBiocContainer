@@ -1,8 +1,9 @@
 ##' @title Create a Simple Bioconductor Container
 ##'
-##' @description
-##'
-##' @details
+##' @description This function is the main working horse the the package. It
+##'     creates a container directory and populates it with a Dockerfile and
+##'     optional data and script directories. The container is ready to be
+##'     build, pushed and shared with collaborators.
 ##'
 ##' @param package An optional vector of package names. If not provided, the
 ##'     currently attached packages are used.
