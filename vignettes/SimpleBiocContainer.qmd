@@ -46,8 +46,6 @@ the paths to the data and the scripts respectively, to be included, we
 can create our container and name it "my_container" as follows:
 
 ```{r}
-#| eval: false
-#| include: true
 container_path <- makeSimpleBiocContainer(
   package = pacs,
   container = "my_container",
