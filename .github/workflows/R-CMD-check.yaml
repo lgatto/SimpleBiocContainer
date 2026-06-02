@@ -123,7 +123,7 @@ jobs:
           error-on: 'never'
 
       - name: Test coverage
-        if: matrix.config.os == 'macos-latest' && matrix.config.bioc == 'main'
+        if: matrix.config.os == 'macos-latest' && matrix.config.bioc == 'release'
         run: |
           install.packages("covr")
           covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")
