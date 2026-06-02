@@ -40,18 +40,23 @@ find useful to have in the container.
 
 ## Quick start
 
-assuming we have a character array `pacs` with the packages to store
-in the container and character arrays `datasets` and `scripts` with
-the paths to the data and the scripts respectively, to be included, we
-can create our container and name it `"my_container"` as follows:
+We have one or multiple packages that we want to add to the container
+and character vectors with data and scripts file names to be included.
+We can create our container and name it `"my_container"` as follows:
 
-```{r}
+```{r createfiles, show = FALSE}
+file.create("data.rda")
+file.create("script.R")
+```
+
+```{r makeSimpleBiocContainer}
+library(SimpleBiocContainer)
 container_path <- makeSimpleBiocContainer(
-  package = pacs,
+  package = "MsCoreUtils",
   container = "my_container",
-  data = datasets,
-  script = scripts
-)
+  data = "data.rda",
+  script = "script.R")
+container_path
 ```
 
 The code chunk above then creates our container, stores it in the
@@ -68,9 +73,7 @@ and push it to Docker Hub as shown below:
 #| include: true
 buildPushDocker(
   container = container_path,
-  dockerUsername = "docker_username", # replace by the intended Docker username
-  ghUsername = NULL
-)
+  dockerUsername = "docker_username") # replace by the intended Docker username
 ```
 
 The argument `ghUsername` (`NULL` by default) allows us to push the container to
