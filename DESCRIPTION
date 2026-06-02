@@ -31,7 +31,8 @@ Suggests:
     testthat (>= 3.0.0),
     knitr,
     quarto,
-    curl
+    curl,
+    mockery
 VignetteBuilder: quarto
 URL: https://lgatto.github.io/SimpleBiocContainer/
 License: GPL-3
