@@ -24,6 +24,10 @@
 ##'
 ##' @author SimpleBiocContainer authors
 ##'
+##' @export
+##'
+##' @importFrom BiocManager version
+##'
 ##' @examples
 ##'
 ##' ## Run this in a temporary directory
