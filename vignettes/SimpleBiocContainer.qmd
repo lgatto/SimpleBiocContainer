@@ -43,7 +43,7 @@ find useful to have in the container.
 assuming we have a character array `pacs` with the packages to store
 in the container and character arrays `datasets` and `scripts` with
 the paths to the data and the scripts respectively, to be included, we
-can create our container and name it "my_container" as follows:
+can create our container and name it `"my_container"` as follows:
 
 ```{r}
 container_path <- makeSimpleBiocContainer(
@@ -55,12 +55,13 @@ container_path <- makeSimpleBiocContainer(
 ```
 
 The code chunk above then creates our container, stores it in the
-working directory, and stores the path to the container directory in 
-`container_path`. If `package` is not specified, `makeSimpleBiocContainer()`
-will store all the packages that are loaded in the current session.
+working directory, and stores the path to the container directory in
+`container_path`. If `package` is not specified,
+`makeSimpleBiocContainer()` will store all the packages that are
+loaded in the current session.
 
-After running `makeSimpleBiocConductor`, we can build our container and push
-it to Docker Hub as shown below:
+After running `makeSimpleBiocConductor()`, we can build our container
+and push it to Docker Hub as shown below:
 
 ```{r}
 #| eval: false
@@ -75,6 +76,8 @@ buildPushDocker(
 The argument `ghUsername` (`NULL` by default) allows us to push the container to
 GitHub as well, being enough to feed it with a character object that contains the
 username we intend to push the container to.
+
+## Session information
 
 ```{r}
 sessionInfo()

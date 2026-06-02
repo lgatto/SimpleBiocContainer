@@ -85,6 +85,9 @@ jobs:
           sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
 
+      - name: Set up quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Build, Install, Check
         id: build-install-check
         uses: grimbough/bioc-actions/build-install-check@v1
