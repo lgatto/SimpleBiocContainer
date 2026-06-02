@@ -1,3 +1,36 @@
+##' @title Create a Simple Bioconductor Container
+##'
+##' @description
+##'
+##' @details
+##'
+##' @param package An optional vector of package names. If not provided, the
+##'     currently attached packages are used.
+##'
+##' @param container `character(1)` with the name of the container. This name
+##'     will be used to create the directory for the Docker file and optional
+##'     data and scripts.
+##'
+##' @param data Optional `character()` with the paths to one or multiple data to
+##'     be included in the container. Missing files will lead to errors.
+##'
+##' @param script Optional `character()` with the paths to one or multiple
+##'     scripts to be included in the container. Missing files will lead to
+##'     errors.
+##'
+##' @return The function returns a `character(1)` with the path to the container
+##'     directory. It is used for its side effect of creating and populating the
+##'     directory.
+##'
+##' @author SimpleBiocContainer authors
+##'
+##' @examples
+##'
+##' ## Run this in a temporary directory
+##' setwd(tempdir())
+##' file.create("data.txt")
+##' makeSimpleBiocContainer(package = "BiocVersion",
+##'                         data = "data.txt")
 makeSimpleBiocContainer <- function(package = NULL,
                                     container = "mycontainer",
                                     data = NULL,
@@ -47,5 +80,5 @@ makeSimpleBiocContainer <- function(package = NULL,
         cat("ADD script /home/rstudio/script/\n", file = df, append = TRUE)
     }
     message("Done 👍")
-    invisible(file.path(getwd(), container))
+    return(file.path(getwd(), container))
 }
