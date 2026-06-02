@@ -20,11 +20,12 @@ will be used to create the directory for the Docker file and optional
 data and scripts.}
 
 \item{data}{Optional \code{character()} with the paths to one or multiple data to
-be included in the container. Missing files will lead to errors.}
+be included in the container in \verb{/home/rstudio/data/}. Missing files
+will lead to errors.}
 
 \item{script}{Optional \code{character()} with the paths to one or multiple
-scripts to be included in the container. Missing files will lead to
-errors.}
+scripts to be included in the container in
+\verb{/home/rstudio/script/}. Missing files will lead to errors.}
 }
 \value{
 The function returns a \code{character(1)} with the path to the container
