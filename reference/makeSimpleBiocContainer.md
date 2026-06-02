@@ -21,25 +21,27 @@ makeSimpleBiocContainer(
 - package:
 
   An optional vector of package names. If not provided, the currently
-  attached packages are used.
+  attached packages are used. The function will verify that all the
+  attached packages can be installed from CRAN or Bioconductor and fail
+  otherwise.
 
 - container:
 
   `character(1)` with the name of the container. This name will be used
   to create the directory for the Docker file and optional data and
-  scripts.
+  script directories.
 
 - data:
 
   Optional [`character()`](https://rdrr.io/r/base/character.html) with
-  the paths to one or multiple data to be included in the container in
-  `/home/rstudio/data/`. Missing files will lead to errors.
+  the path to one or multiple data files to be included in the container
+  in `/home/rstudio/data/`. Missing files will lead to errors.
 
 - script:
 
   Optional [`character()`](https://rdrr.io/r/base/character.html) with
-  the paths to one or multiple scripts to be included in the container
-  in `/home/rstudio/script/`. Missing files will lead to errors.
+  the path to one or multiple scripts to be included in the container in
+  `/home/rstudio/script/`. Missing files will lead to errors.
 
 ## Value
 
@@ -68,6 +70,6 @@ makeSimpleBiocContainer(package = "BiocVersion",
 #> Creating the Dockerfile 🔔.
 #> Adding data.txt 📂
 #> Done 👍.
-#> [1] "/tmp/RtmpBvUluO/mycontainer"
+#> [1] "/tmp/RtmpqVj2NC/mycontainer"
 setwd(oldwd)
 ```

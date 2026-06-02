@@ -61,23 +61,25 @@ build, pushed and shared with collaborators.</p>
 
 <dl><dt id="arg-package">package<a class="anchor" aria-label="anchor" href="#arg-package"></a></dt>
 <dd><p>An optional vector of package names. If not provided, the
-currently attached packages are used.</p></dd>
+currently attached packages are used. The function will verify that all
+the attached packages can be installed from CRAN or Bioconductor and
+fail otherwise.</p></dd>
 
 
 <dt id="arg-container">container<a class="anchor" aria-label="anchor" href="#arg-container"></a></dt>
 <dd><p><code>character(1)</code> with the name of the container. This name
 will be used to create the directory for the Docker file and optional
-data and scripts.</p></dd>
+data and script directories.</p></dd>
 
 
 <dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>Optional <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> with the paths to one or multiple data to
-be included in the container in <code>/home/rstudio/data/</code>. Missing files
-will lead to errors.</p></dd>
+<dd><p>Optional <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> with the path to one or multiple data
+files to be included in the container in <code>/home/rstudio/data/</code>. Missing
+files will lead to errors.</p></dd>
 
 
 <dt id="arg-script">script<a class="anchor" aria-label="anchor" href="#arg-script"></a></dt>
-<dd><p>Optional <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> with the paths to one or multiple
+<dd><p>Optional <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> with the path to one or multiple
 scripts to be included in the container in
 <code>/home/rstudio/script/</code>. Missing files will lead to errors.</p></dd>
 
@@ -107,7 +109,7 @@ directory. See <code><a href="buildPushDocker.html">buildPushDocker()</a></code>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Creating the Dockerfile 🔔.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding data.txt 📂</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done 👍.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpBvUluO/mycontainer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpqVj2NC/mycontainer"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">oldwd</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
