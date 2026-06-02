@@ -19,8 +19,8 @@ can download and install Docker Desktop
 
 - [`makeSimpleBiocContainer()`](https://lgatto.github.io/SimpleBiocContainer/reference/makeSimpleBiocContainer.md),
   which creates a container directory and the respective files;
-- `runDocker()`, which builds the created container and pushes it to
-  Docker Hub.
+- [`buildPushDocker()`](https://lgatto.github.io/SimpleBiocContainer/reference/buildPushDocker.md),
+  which builds the created container and pushes it to Docker Hub.
 
 Packages to include in the container are either the currently attached
 packages (default) or specified by users. The files mentioned for
@@ -37,7 +37,7 @@ create our container and name it “my_container” as follows:
 
 ``` r
 
-makeSimpleBiocContainer(
+container_path <- makeSimpleBiocContainer(
   package = pacs,
   container = "my_container",
   data = datasets,
@@ -46,7 +46,23 @@ makeSimpleBiocContainer(
 ```
 
 The code chunk above then creates our container, stores it in the
-working directory, and returns a character object with the path to the
-directory. If `package` is not specified,
+working directory, and stores the path to the container directory in
+`container_path`. If `package` is not specified,
 [`makeSimpleBiocContainer()`](https://lgatto.github.io/SimpleBiocContainer/reference/makeSimpleBiocContainer.md)
 will store all the packages that are loaded in the current session.
+
+After running `makeSimpleBiocConductor`, we can build our container and
+push it to Docker Hub as shown below:
+
+``` r
+
+buildPushDocker(
+  container = container_path,
+  dockerUsername = "docker_username", # replace by the intended Docker username
+  ghUsername = NULL
+)
+```
+
+The argument `ghUsername` (`NULL` by default) allows us to push the
+container to GitHub as well, being enough to feed it with a character
+object that contains the username we intend to push the container to.

@@ -72,7 +72,7 @@
 <li>
 <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code>, which creates a container directory and the respective files;</li>
 <li>
-<code>runDocker()</code>, which builds the created container and pushes it to Docker Hub.</li>
+<code><a href="../reference/buildPushDocker.html">buildPushDocker()</a></code>, which builds the created container and pushes it to Docker Hub.</li>
 </ul>
 <p>Packages to include in the container are either the currently attached packages (default) or specified by users. The files mentioned for <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code> include datasets and scripts users may find useful to have in the container.</p>
 </section><section class="level2"><h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -80,14 +80,24 @@
 <p>assuming we have a character array <code>pacs</code> with the packages to store in the container and character arrays <code>datasets</code> and <code>scripts</code> with the paths to the data and the scripts respectively, to be included, we can create our container and name it “my_container” as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">container_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer</a></span><span class="op">(</span></span>
 <span>  package <span class="op">=</span> <span class="va">pacs</span>,</span>
 <span>  container <span class="op">=</span> <span class="st">"my_container"</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">datasets</span>,</span>
 <span>  script <span class="op">=</span> <span class="va">scripts</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-<p>The code chunk above then creates our container, stores it in the working directory, and returns a character object with the path to the directory. If <code>package</code> is not specified, <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code> will store all the packages that are loaded in the current session.</p>
+<p>The code chunk above then creates our container, stores it in the working directory, and stores the path to the container directory in <code>container_path</code>. If <code>package</code> is not specified, <code><a href="../reference/makeSimpleBiocContainer.html">makeSimpleBiocContainer()</a></code> will store all the packages that are loaded in the current session.</p>
+<p>After running <code>makeSimpleBiocConductor</code>, we can build our container and push it to Docker Hub as shown below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/buildPushDocker.html">buildPushDocker</a></span><span class="op">(</span></span>
+<span>  container <span class="op">=</span> <span class="va">container_path</span>,</span>
+<span>  dockerUsername <span class="op">=</span> <span class="st">"docker_username"</span>, <span class="co"># replace by the intended Docker username</span></span>
+<span>  ghUsername <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<p>The argument <code>ghUsername</code> (<code>NULL</code> by default) allows us to push the container to GitHub as well, being enough to feed it with a character object that contains the username we intend to push the container to.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
