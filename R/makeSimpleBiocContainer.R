@@ -56,9 +56,9 @@ makeSimpleBiocContainer <- function(package = NULL,
         packageFrom <- .getPackageInstallSources(package)
         if (any(packageFrom == "unknown")) {
             stop("Not all package installation sources could be determined\n",
-                 "  ", sum(packageFrom != "unknown"), " packages are installable: ",
+                 "  ", sum(packageFrom != "unknown"), " package(s) are installable: ",
                  paste(package[packageFrom != "unknown"], collapse = ", "), "\n",
-                 "  ", sum(packageFrom), " packages are not available from CRAN/Bioconductor: ",
+                 "  ", sum(packageFrom == "unknown"), " package(s) are not available from CRAN/Bioconductor: ",
                  paste(package[packageFrom == "unknown"], collapse = ", "))
         }
     }
