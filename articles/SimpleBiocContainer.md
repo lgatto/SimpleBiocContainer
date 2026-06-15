@@ -128,6 +128,6 @@ sessionInfo()
     loaded via a namespace (and not attached):
      [1] BiocManager_1.30.27 compiler_4.6.0      fastmap_1.2.0
      [4] cli_3.6.6           tools_4.6.0         htmltools_0.5.9
-     [7] yaml_2.3.12         rmarkdown_2.31      knitr_1.51
-    [10] jsonlite_2.0.0      xfun_0.58           digest_0.6.39
-    [13] rlang_1.2.0         evaluate_1.0.5     
+     [7] otel_0.2.0          yaml_2.3.12         rmarkdown_2.31
+    [10] knitr_1.51          jsonlite_2.0.0      xfun_0.58
+    [13] digest_0.6.39       rlang_1.2.0         evaluate_1.0.5     
