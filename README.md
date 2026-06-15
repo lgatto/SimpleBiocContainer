@@ -10,3 +10,6 @@ this package might be useful.
 This package was developed as part of the [EuroBioc
 2026](https://eurobioc2026.bioconductor.org/)
 [hackathon](https://github.com/BiocCodingCollaborations/EuroBioc2026_Hackathon).
+
+A citable BioHackrXiv preprint is also available 
+([DOI:10.37044/osf.io/acxky_v1](https://doi.org/10.37044/osf.io/acxky_v1)).
