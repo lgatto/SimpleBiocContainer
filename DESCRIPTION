@@ -1,6 +1,6 @@
 Package: SimpleBiocContainer
 Title: Create a Simple Bioconductor Docker Container
-Version: 0.2.0
+Version: 0.2.1
 Authors@R:
     c(person(given = "Laurent", family = "Gatto",
              email = "laurent.gatto@uclouvain.be",

@@ -34,6 +34,8 @@
 ##' @return Returns the named vector of the Docker (and optional) GitHub
 ##'     containers in the registries.
 ##'
+##' @export
+##'
 ##' @author Ata Badr Barzegar and Laurent Gatto
 buildPushDocker <- function(container, dockerUsername, ghUsername = NULL) {
   oldpath <- getwd()
