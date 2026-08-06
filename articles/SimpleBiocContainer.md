@@ -102,7 +102,7 @@ object that contains the username we intend to push the container to.
 sessionInfo()
 ```
 
-    R version 4.6.0 (2026-04-24)
+    R version 4.6.1 (2026-06-24)
     Platform: x86_64-pc-linux-gnu
     Running under: Ubuntu 24.04.4 LTS
 
@@ -123,11 +123,11 @@ sessionInfo()
     [1] stats     graphics  grDevices utils     datasets  methods   base
 
     other attached packages:
-    [1] SimpleBiocContainer_0.2.0
+    [1] SimpleBiocContainer_0.2.1
 
     loaded via a namespace (and not attached):
-     [1] BiocManager_1.30.27 compiler_4.6.0      fastmap_1.2.0
-     [4] cli_3.6.6           tools_4.6.0         htmltools_0.5.9
+     [1] BiocManager_1.30.27 compiler_4.6.1      fastmap_1.2.0
+     [4] cli_3.6.6           tools_4.6.1         htmltools_0.5.9
      [7] otel_0.2.0          yaml_2.3.12         rmarkdown_2.31
-    [10] knitr_1.51          jsonlite_2.0.0      xfun_0.58
-    [13] digest_0.6.39       rlang_1.2.0         evaluate_1.0.5     
+    [10] knitr_1.51          jsonlite_2.0.0      xfun_0.60
+    [13] digest_0.6.39       rlang_1.3.0         evaluate_1.0.5     

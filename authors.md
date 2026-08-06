@@ -18,12 +18,12 @@
 
 Gatto L, Machlab D, Carrilho J, Stadler M, Badr Barzegar A (2026).
 *SimpleBiocContainer: Create a Simple Bioconductor Docker Container*. R
-package version 0.2.0, <https://lgatto.github.io/SimpleBiocContainer/>.
+package version 0.2.1, <https://lgatto.github.io/SimpleBiocContainer/>.
 
     @Manual{,
       title = {SimpleBiocContainer: Create a Simple Bioconductor Docker Container},
       author = {Laurent Gatto and Dania Machlab and João F. Carrilho and Michael Stadler and Ata {Badr Barzegar}},
       year = {2026},
-      note = {R package version 0.2.0},
+      note = {R package version 0.2.1},
       url = {https://lgatto.github.io/SimpleBiocContainer/},
     }
