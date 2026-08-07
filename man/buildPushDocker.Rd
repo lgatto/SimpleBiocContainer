@@ -19,7 +19,7 @@ Returns the named vector of the Docker (and optional) GitHub
 containers in the registries.
 }
 \description{
-Simple function to build and push the container to Docker Hub
+A simple function to build and push the container to Docker Hub
 or optionally Github directly from R.
 }
 \author{
