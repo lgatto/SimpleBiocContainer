@@ -1,6 +1,6 @@
 # Build and Push the Container
 
-Simple function to build and push the container to Docker Hub or
+A simple function to build and push the container to Docker Hub or
 optionally Github directly from R.
 
 ## Usage
